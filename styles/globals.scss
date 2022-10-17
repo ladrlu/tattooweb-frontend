@@ -1,0 +1,140 @@
+@import "./breakpoints";
+@import url("https://use.typekit.net/yov5xha.css");
+
+//variables
+$space-sm: 1rem;
+$space-md: 3rem;
+$space-lg: 5rem;
+
+//reset
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html,
+body {
+  height: 100%;
+
+}
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  font-family: semplicitapro;
+  font-weight: 300;
+
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+#root,
+#__next {
+  isolation: isolate;
+}
+
+a {
+  all: unset;
+  cursor: pointer;
+}
+
+//Breakpoints
+
+
+
+
+//Typography
+
+html {
+  font-size: 9px;
+
+  @include media(md) {
+    font-size: 10px;
+  }
+
+  @include media(2K) {
+    font-size: 12px;
+  }
+}
+
+body {
+  font-size: 1.8rem;
+}
+
+
+
+
+
+
+
+//Layout
+
+main {
+  display: flex;
+}
+
+.content {
+  padding: $space-md;
+
+  @include media(lg) {
+    padding: $space-lg
+  }
+}
+
+.sidebar {
+  width: 30rem;
+  flex-shrink: 0;
+  padding: $space-md;
+
+  @include media(lg) {
+    padding: $space-lg
+  }
+}
+
+.sidebar__title {
+  font-weight: 400;
+  letter-spacing: 0.24rem;
+}
+
+.sidebar__subtitle {
+  font-weight: 300;
+  font-size: 1.7rem;
+}
+
+.sidebar__navigation {
+  margin-top: $space-md
+}
+
+.sidebar__link {
+  display: block;
+}
