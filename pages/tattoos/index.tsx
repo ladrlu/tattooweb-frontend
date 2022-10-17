@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { TattoosQuery } from "../../graphql/tatoos/tattoos";
 import client from "../../apollo-client";
-import Image from "next/image";
+import ImageExtended from "../../components/ImageExtended";
 
 export type Tattoo = {
   id: number;
@@ -35,8 +35,6 @@ export async function getStaticProps() {
   };
 }
 
-const strapi_url = process.env.NEXT_PUBLIC_STRAPI_URL;
-
 const Tattoos = ({ tattoos }: Props) => {
   return (
     <div>
@@ -44,13 +42,16 @@ const Tattoos = ({ tattoos }: Props) => {
       {tattoos.map((tattoo: Tattoo) => (
         <Link href={"/tattoos/" + tattoo.id} key={tattoo.id}>
           <a>
-            <Image
-              src={`${strapi_url}${tattoo.attributes.previewImage.data.attributes.url}?format=webp;width=100`}
+            <ImageExtended
+              fallBackSrc={tattoo.attributes.previewImage.data.attributes.url}
+              src={tattoo.attributes.previewImage.data.attributes.url}
               alt={
                 tattoo.attributes.previewImage.data.attributes.alternativeText
               }
               width="500"
               height="500"
+              objectFit="cover"
+              className="image__wrapper"
             />
             {tattoo.attributes.title} {tattoo.attributes.description}
             <br />
